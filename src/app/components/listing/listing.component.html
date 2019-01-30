@@ -1,0 +1,25 @@
+<table border="1" cellspacing="2">
+  <tr>
+    <th>SN</th>
+    <th>Name</th>
+    <th>Profession</th>
+    <th>City</th>
+    <th>Fee Status</th>
+  </tr>
+  <tr *ngFor="let aStudent of students; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{aStudent.name}}</td>
+    <td>{{aStudent.profession}}</td>
+    <td>{{aStudent.city}}</td>
+    <td>
+      <button style="background: blue; color: #fff;" type="button" *ngIf="aStudent.feeStatus !== 'PAID'">
+        Pay Now
+      </button>
+      <span style="color: green;" *ngIf="aStudent.feeStatus === 'PAID'">PAID</span>
+    </td>
+  </tr>
+</table>
+
+<input type="text" [ngModel]="userName">
+
+{{userName}}
