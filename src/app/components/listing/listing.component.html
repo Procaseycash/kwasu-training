@@ -12,7 +12,8 @@
     <td>{{aStudent.profession}}</td>
     <td>{{aStudent.city}}</td>
     <td>
-      <button (click)="payNow(aStudent)" style="background: blue; color: #fff;" type="button" *ngIf="aStudent.feeStatus !== 'PAID'">
+      <button (click)="payNow(aStudent)" style="background: blue; color: #fff;" type="button"
+              *ngIf="aStudent.feeStatus !== 'PAID'">
         Pay Now
       </button>
       <span style="color: green;" *ngIf="aStudent.feeStatus === 'PAID'">PAID</span>
@@ -24,4 +25,9 @@
 
 {{userName}}
 
-<app-input-event *ngIf="studentInfo" [studentDetail]="studentInfo" ></app-input-event>
+<app-input-event *ngIf="studentInfo" [studentDetail]="studentInfo"></app-input-event>
+
+<app-output-event (adder)="getAdder($event)"></app-output-event>
+
+<h3>Counter Result: {{counter}}</h3>
+

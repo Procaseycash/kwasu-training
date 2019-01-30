@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import index from "@angular/cli/lib/cli";
 
 @Component({
   selector: 'app-listing',
@@ -28,6 +29,7 @@ export class ListingComponent implements OnInit {
   ];
   public studentInfo;
   public userName = 'SilentWolf';
+  public counter = 0;
 
   constructor() {
   }
@@ -36,6 +38,11 @@ export class ListingComponent implements OnInit {
     this.studentInfo = studentInfo;
     alert(`My name is ${this.studentInfo.name}, I'm about to pay for my school fees`);
     this.studentInfo.feeStatus = 'PAID';
+  }
+
+  getAdder(value) {
+    if (this.counter < 0 || (this.counter === 0 && value < 0)) return this.counter = 0;
+    this.counter = this.counter + value;
   }
 
   ngOnInit() {
