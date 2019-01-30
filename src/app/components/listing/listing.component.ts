@@ -26,9 +26,16 @@ export class ListingComponent implements OnInit {
       feeStatus: 'NOT_PAID'
     }
   ];
+  public studentInfo;
   public userName = 'SilentWolf';
 
   constructor() {
+  }
+
+  payNow(studentInfo) {
+    this.studentInfo = studentInfo;
+    alert(`My name is ${this.studentInfo.name}, I'm about to pay for my school fees`);
+    this.studentInfo.feeStatus = 'PAID';
   }
 
   ngOnInit() {
