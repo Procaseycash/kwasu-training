@@ -8,6 +8,7 @@ import {SecondListingModule} from "./modules/second-listing/second-listing.modul
 import { InputEventComponent } from './components/input-event/input-event.component';
 import { OutputEventComponent } from './components/output-event/output-event.component';
 import {HttpClientModule} from "@angular/common/http";
+import { TestComponentsComponent } from './test-components/test-components.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
     ListingComponent,
     InputEventComponent,
     OutputEventComponent,
+    TestComponentsComponent,
   ],
   imports: [
     FormsModule,
