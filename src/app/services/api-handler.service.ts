@@ -31,7 +31,7 @@ export class ApiHandlerService {
     return this.http.patch(url, request, options);
   }
 
-  delete(url: string, options?: object): Observable<any> {
+  delete_(url: string, options?: object): Observable<any> {
     return this.delete(url, null, options);
   }
 
