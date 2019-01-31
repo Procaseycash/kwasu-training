@@ -1,37 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import index from "@angular/cli/lib/cli";
+import {StudentService} from "../../services/student.service";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {GoogleApiService} from "../../services/google-api.service";
 
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',
-  styleUrls: ['./listing.component.css']
+  styleUrls: ['./listing.component.css'],
+  providers: [StudentService]
 })
-export class ListingComponent implements OnInit {
-  public students: Array<object> = [
-    {
-      name: 'Kazeem Olanipekun',
-      profession: 'Software Developer',
-      city: 'Ilorin',
-      feeStatus: 'PAID'
-    },
-    {
-      name: 'Bola James',
-      profession: 'Teacher',
-      city: 'Ikeja',
-      feeStatus: 'PARTIALLY_PAID'
-    },
-    {
-      name: 'Segun Adeola',
-      profession: 'Software Developer',
-      city: 'Ilorin',
-      feeStatus: 'NOT_PAID'
-    }
-  ];
+export class ListingComponent implements OnInit, AfterViewInit {
+  public students: Array<object> = [];
   public studentInfo;
   public userName = 'SilentWolf';
   public counter = 0;
+  public googleIndex: SafeHtml  = null;
 
-  constructor() {
+  constructor(
+    private studentService: StudentService,
+    private dom: DomSanitizer,
+    private googleApiService: GoogleApiService) {
   }
 
   payNow(studentInfo) {
@@ -45,8 +34,31 @@ export class ListingComponent implements OnInit {
     this.counter = this.counter + value;
   }
 
-  ngOnInit() {
+  private getStudents() {
+    this.students = this.studentService.getStudents();
+  }
 
+  private getWebsiteIndex() {
+    this.googleApiService.getGoogleWebsiteIndex().subscribe(
+      (res) => {
+        this.googleIndex = this.dom.bypassSecurityTrustHtml(res);
+        console.log('response=', res);
+      },
+      (err) => {
+        console.log('Error=', err);
+      },
+      () => {
+        console.log('State Completed');
+      }
+    );
+  }
+
+  ngAfterViewInit(): void {
+  }
+
+  ngOnInit() {
+    this.getWebsiteIndex();
+    this.getStudents();
   }
 
 }

@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {SecondListingModule} from "./modules/second-listing/second-listing.module";
 import { InputEventComponent } from './components/input-event/input-event.component';
 import { OutputEventComponent } from './components/output-event/output-event.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { OutputEventComponent } from './components/output-event/output-event.com
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     SecondListingModule
   ],
   providers: [],
