@@ -1,0 +1,16 @@
+
+<h2>Form 1</h2>
+<form (ngSubmit)="createOrUpdateStudent()" [formGroup]="studentForm"  action="">
+  Name: <input formControlName="name" type="text">
+  <span style="color: red" *ngIf="studentForm.get('name').touched && studentForm.get('name').invalid">
+    Please fill in your name.
+  </span> <br>
+  City: <input *ngIf="studentForm.contains('city')" formControlName="city" type="text"> <br>
+  Profession: <input formControlName="profession" type="text"> <br>
+  Fee Status: <select formControlName="feeStatus" id="">
+  <option>Select Status </option>
+  <option value="PAID">PAID</option>
+  <option value="NOT_PAID">NOT PAID</option>
+</select> <br><br>
+  <button [disabled]="studentForm.invalid" type="submit">Submit</button>
+</form>

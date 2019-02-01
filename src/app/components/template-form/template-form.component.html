@@ -1,0 +1,29 @@
+
+<h2>Form 1</h2>
+<form (ngSubmit)="createOrUpdateStudent(studentForm.value)" #studentForm="ngForm" action="">
+  Name: <input [(ngModel)]="studentInfo.name" name="name" type="text"> <br>
+  City: <input [(ngModel)]="studentInfo.city" name="city" type="text"> <br>
+  Profession: <input [(ngModel)]="studentInfo.profession" name="profession" type="text"> <br>
+  Fee Status: <select [(ngModel)]="studentInfo.feeStatus" name="feeStatus" id="">
+    <option>Select Status </option>
+    <option value="PAID">PAID</option>
+    <option value="NOT_PAID">NOT PAID</option>
+  </select> <br><br>
+  <button [disabled]="!studentForm.form.invalid" type="submit">Submit</button>
+</form>
+
+<h2>Form 2</h2>
+
+<form (ngSubmit)="create(student2.value)" #student2="ngForm" action="">
+  Name: <input ngModel name="name" type="text"> <br>
+  City: <input  ngModel name="city" type="text"> <br>
+  Profession: <input ngModel name="profession" type="text"> <br>
+  Fee Status: <select  ngModel name="feeStatus">
+  <option>Select Status </option>
+  <option value="PAID">PAID</option>
+  <option value="NOT_PAID">NOT PAID</option>
+</select> <br><br>
+  <button type="submit">Submit</button>
+</form>
+
+
